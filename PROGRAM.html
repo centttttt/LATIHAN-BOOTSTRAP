@@ -1,1 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FC Barcelona — Official Page</title>
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root { --blue:#004d98; --maroon:#a50044; }
+    body { font-family:'Poppins',sans-serif; scroll-behavior:smooth; }
+    .navbar-dua-warna { background:linear-gradient(to right,var(--blue) 50%,var(--maroon) 50%); }
+    .navbar-brand img{ width:70px;height:70px;object-fit:contain; }
+    main { margin-top:92px; }
+    section { padding:60px 0; }
+    h2 { color:var(--blue); font-weight:700; margin-bottom:20px; }
+
+    /* Card umum */
+    .card{ border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,.08); }
+
+    /* Tombol kustom */
+    .btn-custom { background:var(--maroon); color:#fff; border:none; font-weight:700; }
+    .btn-custom:hover { background:#7d0032; color:#fff; }
+
+    /* NEWS & UPDATES */
+.match-card {
+  text-align: center;
+}
+
+.match-card h5 {
+  font-weight: 600;
+  color: #004d98;
+}
+
+.team-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #004d98;
+  display: flex;
+  align-items: center;     /* sejajar vertikal */
+  justify-content: center; /* sejajar horizontal */
+  width: 80px;             /* jarak seragam */
+  height: 70px;            /* samakan tinggi dengan logo */
+  line-height: 1;
+}
+/* TROPHY SECTION */
+#trophy .card-img-top {
+  width: 100%;
+  height: 180px;           /* ubah sesuai tinggi yang diinginkan */
+  object-fit: contain;     /* biar gambar tidak terpotong */
+  padding: 1px;           /* beri jarak agar tidak mepet */
+  background-color: #ffff; /* latar netral agar rapi */
+}
+/* Background full untuk First Team */
+#firstteam {
+  background-image: url(img/SET_Jugadors.jpg); /* Ganti dengan gambar kamu */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white; /* Supaya teksnya tetap terbaca */
+  position: relative;
+  z-index: 1;
+}
+
+/* Tambahkan overlay gelap agar teks lebih kontras */
+#firstteam::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); /* efek transparan */
+  z-index: -1;
+}
+
+/* Pastikan konten tidak nempel tepi */
+#firstteam .container {
+  position: relative;
+  z-index: 2;
+}
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-dua-warna fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="img/barcelona-removebg-preview.png" alt="Logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto gap-3">
+          <li class="nav-item"><a class="nav-link" href="#firstteam">First Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="#club">Club</a></li>
+          <li class="nav-item"><a class="nav-link" href="#trophy">Trophy</a></li>
+        </ul>
+        <ul class="navbar-nav ms-auto gap-3">
+          <li class="nav-item"><a class="nav-link" href="#tickets">Tickets</a></li>
+          <li class="nav-item"><a class="nav-link" href="#news">News & Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="#culers">Culers</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- FIRST TEAM -->
+    <section id="firstteam" class="bg-light text-center">
+      <div class="container">
+        <h2>First Team</h2>
+        <p>Geser untuk melihat Starting XI FC Barcelona musim 2024/2025.</p>
+
+        <div id="carouselFirstTeam" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+              <img src="img/09-Lewandowski.webp" class="d-block w-100 rounded" alt="Lewandowski">
+              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                <h5>Robert Lewandowski</h5>
+                <p>Forward • No. 9</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="img/10-Lamine.webp" class="d-block w-100 rounded" alt="Yamal">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                  <h5>Lamine Yamal</h5>
+                  <p>Forward • No. 10</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="img/11-Raphinha.webp" class="d-block w-100 rounded" alt="Raphinha">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                  <h5>Raphinha</h5>
+                  <p>Forward • No. 11</p>
+                </div>
+            </div>
+              
+            <div class="carousel-item">
+                <img src="img/16-Fermin.webp" class="d-block w-100 rounded" alt="López">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                  <h5>Fermín López</h5>
+                  <p>Midfielder • No. 16</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="img/21-De_Jong.webp" class="d-block w-100 rounded" alt="de Jong">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                  <h5>Frenkie de Jong</h5>
+                  <p>Midfielder • No. 21</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="img/17-Casado.webp" class="d-block w-100 rounded" alt="Casadó">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                  <h5>Marc Casadó</h5>
+                  <p>Midfielder  • No. 17</p>
+                </div>
+              </div>
+
+            <div class="carousel-item">
+              <img src="img/23-Kounde.webp" class="d-block w-100 rounded" alt="Kounde">
+              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                <h5>Jules Koundé</h5>
+                <p>Defender • No. 23</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="img/04-Araujo.webp" class="d-block w-100 rounded" alt="Araujo">
+              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                <h5>Ronald Araújo</h5>
+                <p>Defender • No. 4</p>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <img src="img/24-Eric_Garcia.webp" class="d-block w-100 rounded" alt="Garcia">
+              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                <h5>Eric García</h5>
+                <p>Defender • No. 24</p>
+              </div>
+            </div>
+
+
+            <div class="carousel-item">
+                <img src="img/03-Balde.webp" class="d-block w-100 rounded" alt="Balde">
+                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                  <h5>Alejandro Balde</h5>
+                  <p>Defender • No. 3</p>
+                </div>
+              </div>
+
+            <div class="carousel-item">
+              <img src="img/01-Joan_Garcia.webp" class="d-block w-100 rounded" alt="García">
+              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+                <h5>Joan Garcia</h5>
+                <p>GoalKeeper • No. 1</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselFirstTeam" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselFirstTeam" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLUB -->
+<section id="club" class="bg-white">
+    <div class="container text-center">
+      <h2>About the Club</h2>
+      <p>FC Barcelona didirikan pada 1899. Lebih dari klub — <strong>Més que un club</strong>.</p>
+      <div class="row g-4 align-items-stretch mt-4">
+  
+        <!-- Sejarah -->
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="img/FC_Barcelona_1910.jpg" class="card-img-top" alt="Sejarah Klub">
+            <div class="card-body">
+              <h5 class="card-title">Sejarah</h5>
+              <p class="card-text">
+                Warisan panjang dan semangat Catalan yang tak tergoyahkan sejak 1899.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Stadium -->
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="img/stadion.webp" class="card-img-top" alt="Stadium Spotify Camp Nou">
+            <div class="card-body">
+              <h5 class="card-title">Stadium</h5>
+              <p class="card-text">
+                Spotify Camp Nou, stadion megah dengan kapasitas lebih dari 99.000 penonton.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- La Masia -->
+        <div class="col-md-4">
+          <div class="card h-100">
+            <img src="img/1.-La-Masia.jpg" class="card-img-top" alt="Akademi La Masia">
+            <div class="card-body">
+              <h5 class="card-title">La Masia</h5>
+              <p class="card-text">
+                Akademi legendaris penghasil pemain hebat seperti Messi, Xavi, dan Iniesta.
+              </p>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+
+    <!-- TROPHY -->
+<section id="trophy" class="bg-white text-center">
+    <div class="container">
+      <h2>Our Trophies</h2>
+      <p>Kebanggaan FC Barcelona — koleksi piala terbesar di dunia sepak bola.</p>
+  
+      <div class="row g-4 justify-content-center">
+        <!-- Liga Champions -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="img/uefa.webp" class="card-img-top" alt="UEFA Champions League Trophy">
+            <div class="card-body">
+              <h5 class="card-title">UEFA Champions League</h5>
+              <p class="card-text">5 Titles<br><small>(1992, 2006, 2009, 2011, 2015)</small></p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- La Liga -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="img/laligaaa.webp" class="card-img-top" alt="La Liga Trophy">
+            <div class="card-body">
+              <h5 class="card-title">La Liga</h5>
+              <p class="card-text">27 Titles<br><small>Terakhir: 2022/23</small></p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Copa del Rey -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="img/supercopa.jpg" class="card-img-top" alt="Copa del Rey Trophy">
+            <div class="card-body">
+              <h5 class="card-title">Copa del Rey</h5>
+              <p class="card-text">31 Titles<br><small>Rekor terbanyak di Spanyol</small></p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Spanish Super Cup -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="img/super.webp" class="card-img-top" alt="Supercopa de España Trophy">
+            <div class="card-body">
+              <h5 class="card-title">Supercopa de España</h5>
+              <p class="card-text">14 Titles<br><small>Terakhir: 2023</small></p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- FIFA Club World Cup -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="img/fifa wc.jpg" class="card-img-top" alt="FIFA Club World Cup Trophy">
+            <div class="card-body">
+              <h5 class="card-title">FIFA Club World Cup</h5>
+              <p class="card-text">3 Titles<br><small>(2009, 2011, 2015)</small></p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- UEFA Super Cup -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="img/uefa super.jpg" class="card-img-top" alt="UEFA Super Cup Trophy">
+            <div class="card-body">
+              <h5 class="card-title">UEFA Super Cup</h5>
+              <p class="card-text">5 Titles<br><small>(1992, 1997, 2009, 2011, 2015)</small></p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Joan Gamper Trophy -->
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="img/gamper.webp" class="card-img-top" alt="Joan Gamper Trophy">
+            <div class="card-body">
+              <h5 class="card-title">Joan Gamper Trophy</h5>
+              <p class="card-text">44 Titles<br><small>Turnamen pramusim tahunan Barça</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+    <!-- TICKETS -->
+<section id="tickets" class="bg-light">
+    <div class="container">
+      <h2>Tickets & Match Schedule</h2>
+      <p>Dukung Barça langsung dari stadion! Lihat jadwal pertandingan terbaru dan pesan tiket resmi di sini.</p>
+  
+      <!-- Jadwal Pertandingan -->
+      <div class="card shadow-sm mb-4">
+        <div class="card-body">
+          <h5 class="card-title text-center mb-3">Jadwal Pertandingan FC Barcelona 2025</h5>
+          <div class="table-responsive">
+            <table class="table table-bordered align-middle">
+              <thead class="table-primary text-center">
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Kompetisi</th>
+                  <th>Pertandingan</th>
+                  <th>Lokasi</th>
+                  <th>Jam (WIB)</th>
+                </tr>
+              </thead>
+              <tbody class="text-center">
+                <tr>
+                  <td>10 November 2025</td>
+                  <td>La Liga</td>
+                  <td>Barcelona vs Real Betis</td>
+                  <td>Camp Nou</td>
+                  <td>03:00</td>
+                </tr>
+                <tr>
+                  <td>17 November 2025</td>
+                  <td>La Liga</td>
+                  <td>Atletico Madrid vs Barcelona</td>
+                  <td>Wanda Metropolitano</td>
+                  <td>02:00</td>
+                </tr>
+                <tr>
+                  <td>23 November 2025</td>
+                  <td>UEFA Champions League</td>
+                  <td>Barcelona vs Bayern Munich</td>
+                  <td>Camp Nou</td>
+                  <td>03:00</td>
+                </tr>
+                <tr>
+                  <td>30 November 2025</td>
+                  <td>La Liga</td>
+                  <td>Barcelona vs Girona</td>
+                  <td>Camp Nou</td>
+                  <td>22:15</td>
+                </tr>
+                <tr>
+                  <td>7 Desember 2025</td>
+                  <td>La Liga</td>
+                  <td>Real Madrid vs Barcelona (El Clásico)</td>
+                  <td>Santiago Bernabéu</td>
+                  <td>02:45</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Pemesanan Tiket -->
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="card p-3 shadow-sm h-100">
+            <h5>Beli Tiket Pertandingan Berikutnya</h5>
+            <p><strong>Barcelona vs Real Betis</strong><br><small>Camp Nou — 10 November 2025</small></p>
+  
+            <form>
+              <div class="mb-3">
+                <label class="form-label">Kategori Tiket</label>
+                <select class="form-select">
+                  <option>Standard (€45)</option>
+                  <option>Premium (€90)</option>
+                  <option>VIP (€180)</option>
+                </select>
+              </div>
+  
+              <div class="mb-3">
+                <label class="form-label">Jumlah</label>
+                <input type="number" class="form-control" min="1" max="10" value="1">
+              </div>
+  
+              <div class="d-grid gap-2">
+                <button type="button" class="btn btn-custom">Pesan Sekarang</button>
+                <button type="button" class="btn btn-outline-secondary">Lihat Peta Kursi</button>
+              </div>
+            </form>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <div class="card p-3 shadow-sm h-100">
+            <h5>Informasi Tiket</h5>
+            <ul>
+              <li>Pemesanan resmi melalui kanal FC Barcelona.</li>
+              <li>Tiket elektronik dikirim melalui email terdaftar.</li>
+              <li>Harga bervariasi tergantung kategori dan posisi tempat duduk.</li>
+              <li>Anak-anak di bawah 5 tahun masuk gratis dengan pendamping.</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary mt-auto">Lihat Semua Jadwal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+ <!-- NEWS & UPDATES -->
+ <section id="news" class="text-center">
+    <div class="container">
+      <h2>News & Match Updates</h2>
+      <p>Ikuti hasil pertandingan terbaru dan berita terkini FC Barcelona musim 2024/2025.</p>
+
+      <div class="row gy-4 mt-4">
+        <!-- Match 1 -->
+        <div class="col-md-4">
+          <div class="match-card">
+            <h5>La Liga - 2 November 2025</h5>
+            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+              <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca">
+              <div class="score">3 - 1</div>
+              <img src="img/sevila.png" class="team-logo" alt="Sevilla">
+            </div>
+            <p class="mt-3">Barça unggul lewat gol dari Lewandowski, Yamal, dan Raphinha.</p>
+          </div>
+        </div>
+
+        <!-- Match 2 -->
+        <div class="col-md-4">
+          <div class="match-card">
+            <h5>Champions League - 29 Oktober 2025</h5>
+            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+              <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca">
+              <div class="score">2 - 0</div>
+              <img src="img/inter-milan-new-20216579.jpg" class="team-logo" alt="Inter Milan">
+            </div>
+            <p class="mt-3">Pedri dan Gavi mencetak gol dalam kemenangan meyakinkan atas Inter.</p>
+          </div>
+        </div>
+
+        <!-- Match 3 -->
+        <div class="col-md-4">
+          <div class="match-card">
+            <h5>La Liga - 25 Oktober 2025</h5>
+            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+              <img src="img/madrid.webp
+              " class="team-logo" alt="Real Madrid">
+              <div class="score">1 - 1</div>
+              <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca">
+            </div>
+            <p class="mt-3">El Clásico berakhir imbang lewat gol cepat Lewandowski di menit 15.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="btn btn-custom mt-4">Lihat Semua Berita</a>
+    </div>
+  </section>
+
+    <!-- CULERS -->
+    <section id="culers" class="bg-white text-center">
+      <div class="container">
+        <h2>Culers Community</h2>
+        <p>Bergabung dan dapatkan berita eksklusif Barça!</p>
+        <form class="row justify-content-center g-2">
+          <div class="col-md-5"><input type="email" class="form-control" placeholder="Email" required></div>
+          <div class="col-md-2"><button class="btn btn-custom w-100" type="submit" data-bs-toggle="modal" data-bs-target="#joinModal">Gabung</button></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Modal Join -->
+    <div class="modal fade" id="joinModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header"><h5 class="modal-title">Selamat Datang!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+          <div class="modal-body">Terima kasih telah bergabung dengan komunitas Culers (demo).</div>
+          <div class="modal-footer"><button class="btn btn-custom" data-bs-dismiss="modal">OK</button></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bootstrap JS (diperlukan untuk komponen interaktif) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
