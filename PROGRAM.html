@@ -1,557 +1,744 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="id">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FC Barcelona — Official Page</title>
+  <meta name="description" content="Situs demo FC Barcelona — berita, jadwal, tiket, dan statistik. Més que un club." />
+  <meta name="author" content="FC Barcelona Demo" />
+  <link rel="icon" href="img/favicon.png" type="image/png" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FC Barcelona — Official Page"/>
+  <meta property="og:description" content="Situs demo FC Barcelona — berita, jadwal, tiket, dan statistik."/>
+  <meta property="og:image" content="img/og-image.jpg"/>
+  <meta property="og:type" content="website" />
+
+  <!-- Structured Data (Organization) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SportsTeam",
+    "name":"FC Barcelona (Demo)",
+    "url":"https://example.com",
+    "logo":"https://example.com/img/barcelona-removebg-preview.png",
+    "foundingDate":"1899",
+    "sport":"Soccer"
+  }
+  </script>
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="" crossorigin="anonymous">
+
   <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root { --blue:#004d98; --maroon:#a50044; }
-    body { font-family:'Poppins',sans-serif; scroll-behavior:smooth; }
-    .navbar-dua-warna { background:linear-gradient(to right,var(--blue) 50%,var(--maroon) 50%); }
-    .navbar-brand img{ width:70px;height:70px;object-fit:contain; }
-    main { margin-top:92px; }
-    section { padding:60px 0; }
-    h2 { color:var(--blue); font-weight:700; margin-bottom:20px; }
+    :root{
+      --blue:#004d98; --maroon:#a50044; --muted:#6c757d; --glass: rgba(255,255,255,0.08);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family:"Poppins",sans-serif;
+      margin:0;
+      background:linear-gradient(180deg,#fafafa 0%, #f4f7fb 100%);
+      color:#222;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
+    }
 
-    /* Card umum */
-    .card{ border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,.08); }
+    /* NAVBAR */
+    .navbar-dua-warna {
+      background:linear-gradient(90deg,var(--blue) 50%,var(--maroon) 50%);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .navbar-brand img{ width:60px; height:60px; object-fit:contain; }
+    .nav-link{ color: rgba(255,255,255,0.94); transition: .18s; }
+    .nav-link:hover{ opacity:.95; transform: translateY(-1px); }
+    .nav-link.active{
+      font-weight:700;
+      text-decoration: underline 3px solid rgba(255,255,255,0.18);
+    }
 
-    /* Tombol kustom */
-    .btn-custom { background:var(--maroon); color:#fff; border:none; font-weight:700; }
-    .btn-custom:hover { background:#7d0032; color:#fff; }
+    main{ margin-top:86px; }
 
-    /* NEWS & UPDATES */
-.match-card {
-  text-align: center;
-}
+    section{ padding:72px 0; scroll-margin-top:100px; }
 
-.match-card h5 {
-  font-weight: 600;
-  color: #004d98;
-}
+    h2{ color:var(--blue); font-weight:700; margin-bottom:12px; }
 
-.team-logo {
-  width: 70px;
-  height: 70px;
-  object-fit: contain;
-}
+    /* Cards */
+    .card{ border-radius:var(--radius); box-shadow:0 10px 30px rgba(15,23,42,0.06); overflow:hidden; }
+    .card .card-img-top{ object-fit:cover; height:180px; }
 
-.score {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #004d98;
-  display: flex;
-  align-items: center;     /* sejajar vertikal */
-  justify-content: center; /* sejajar horizontal */
-  width: 80px;             /* jarak seragam */
-  height: 70px;            /* samakan tinggi dengan logo */
-  line-height: 1;
-}
-/* TROPHY SECTION */
-#trophy .card-img-top {
-  width: 100%;
-  height: 180px;           /* ubah sesuai tinggi yang diinginkan */
-  object-fit: contain;     /* biar gambar tidak terpotong */
-  padding: 1px;           /* beri jarak agar tidak mepet */
-  background-color: #ffff; /* latar netral agar rapi */
-}
-/* Background full untuk First Team */
-#firstteam {
-  background-image: url(img/SET_Jugadors.jpg); /* Ganti dengan gambar kamu */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white; /* Supaya teksnya tetap terbaca */
-  position: relative;
-  z-index: 1;
-}
+    /* Buttons */
+    .btn-custom{ background:var(--maroon); color:#fff; border:none; font-weight:700; border-radius:10px; }
+    .btn-custom:hover{ filter:brightness(.95) }
 
-/* Tambahkan overlay gelap agar teks lebih kontras */
-#firstteam::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.55); /* efek transparan */
-  z-index: -1;
-}
+    /* First team hero */
+    #firstteam{
+      background-image: url('img/SET_Jugadors.jpg');
+      background-size:cover;
+      background-position:center;
+      color:white; position:relative; min-height:420px; display:flex; align-items:center;
+    }
+    #firstteam::after{
+      content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));
+    }
+    #firstteam .container{ position:relative; z-index:2; }
 
-/* Pastikan konten tidak nempel tepi */
-#firstteam .container {
-  position: relative;
-  z-index: 2;
-}
+    /* Carousel captions */
+    .carousel-caption{ background: rgba(0,0,0,0.45); border-radius:10px; padding:8px 12px; }
+
+    /* News match card */
+    .match-card{ text-align:center; }
+    .match-card h6{ color:var(--blue); font-weight:600; }
+    .team-logo{ width:64px; height:64px; object-fit:contain; }
+
+    .score{ font-size:1.9rem; font-weight:800; color:var(--blue); width:84px; height:64px; display:flex; align-items:center; justify-content:center; }
+
+    /* Tickets */
+    table.table thead th{ background: linear-gradient(90deg, rgba(0,77,152,0.95), rgba(165,0,68,0.85)); color:#fff; border:0; }
+
+    /* Footer */
+    footer{ background:var(--blue); color:#fff; padding:20px 0; margin-top:48px; }
+
+    /* Scroll to top */
+    #scrollTopBtn{ position:fixed; bottom:26px; right:26px; z-index:999; width:48px; height:48px; border-radius:50%; border:none; background:var(--blue); color:#fff; display:none; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(0,0,0,0.18); cursor:pointer; }
+
+    /* Small UI niceties */
+    .fade-in-up{ opacity:0; transform:translateY(12px); transition:all .6s cubic-bezier(.2,.8,.2,1); }
+    .fade-in-up.visible{ opacity:1; transform:none; }
+
+    /* Dark mode support toggle */
+    :root[data-theme="dark"]{
+      --bg:#0b1220; --surface:#0f1724; --muted:#9aa4b2; --text:#e6eef6;
+    }
+    :root[data-theme="dark"] body{ background:linear-gradient(180deg,#04102b 0%, #071330 100%); color:var(--text); }
+    :root[data-theme="dark"] .card{ background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); box-shadow:none; border:1px solid rgba(255,255,255,0.03); }
+    :root[data-theme="dark"] footer{ background:#031733; }
+
+    /* Responsive image helper */
+    img[loading="lazy"]{ filter: none; }
+
+    /* Accessibility focus */
+    a:focus, button:focus, input:focus { outline: 3px dashed rgba(0,77,152,0.18); outline-offset:3px; }
+
+    /* Utilities */
+    .small-muted{ color:var(--muted); font-size:0.92rem; }
+
+    @media (max-width:768px){
+      .navbar-brand img{ width:52px; height:52px; }
+      #firstteam{ min-height:340px; padding:28px 0; }
+    }
   </style>
 </head>
-
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-dua-warna fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-dua-warna fixed-top" role="navigation" aria-label="Main navigation">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="img/barcelona-removebg-preview.png" alt="Logo"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+      <a class="navbar-brand d-flex align-items-center" href="#" aria-label="FC Barcelona Home">
+        <img src="img/barcelona-removebg-preview.png" alt="Barcelona logo" loading="lazy">
+        <span class="ms-2 d-none d-md-inline" style="font-weight:700; color:#fff;">FC Barcelona</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav me-auto gap-3">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
           <li class="nav-item"><a class="nav-link" href="#firstteam">First Team</a></li>
           <li class="nav-item"><a class="nav-link" href="#club">Club</a></li>
           <li class="nav-item"><a class="nav-link" href="#trophy">Trophy</a></li>
         </ul>
-        <ul class="navbar-nav ms-auto gap-3">
+
+        <form class="d-flex align-items-center me-3" role="search" onsubmit="return false;">
+          <input id="newsSearch" class="form-control form-control-sm me-2" type="search" placeholder="Cari berita..." aria-label="Cari berita" />
+        </form>
+
+        <ul class="navbar-nav ms-auto gap-2">
           <li class="nav-item"><a class="nav-link" href="#tickets">Tickets</a></li>
-          <li class="nav-item"><a class="nav-link" href="#news">News & Updates</a></li>
+          <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
           <li class="nav-item"><a class="nav-link" href="#culers">Culers</a></li>
         </ul>
+
+        <div class="d-flex align-items-center ms-3 gap-2">
+          <button id="themeToggle" class="btn btn-sm btn-outline-light" title="Toggle dark mode" aria-pressed="false">Dark</button>
+        </div>
       </div>
     </div>
   </nav>
 
   <main>
-    <!-- FIRST TEAM -->
-    <section id="firstteam" class="bg-light text-center">
-      <div class="container">
-        <h2>First Team</h2>
-        <p>Geser untuk melihat Starting XI FC Barcelona musim 2024/2025.</p>
+    <!-- FIRST TEAM HERO -->
+    <section id="firstteam" aria-labelledby="firstteam-heading">
+      <div class="container text-center text-white">
+        <h2 id="firstteam-heading" class="mb-2">First Team</h2>
+        <p class="lead mb-4">Geser untuk melihat Starting XI FC Barcelona musim 2024/2025.</p>
 
-        <div id="carouselFirstTeam" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-
+        <div id="carouselFirstTeam" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3200" aria-label="Carousel pemain">
+          <div class="carousel-inner rounded">
             <div class="carousel-item active">
-              <img src="img/09-Lewandowski.webp" class="d-block w-100 rounded" alt="Lewandowski">
-              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
+              <picture>
+                <source srcset="img/09-Lewandowski.webp" type="image/webp">
+                <img src="img/09-Lewandowski.webp" class="d-block w-100" alt="Robert Lewandowski" loading="lazy">
+              </picture>
+              <div class="carousel-caption d-none d-md-block">
                 <h5>Robert Lewandowski</h5>
                 <p>Forward • No. 9</p>
               </div>
             </div>
 
             <div class="carousel-item">
-                <img src="img/10-Lamine.webp" class="d-block w-100 rounded" alt="Yamal">
-                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                  <h5>Lamine Yamal</h5>
-                  <p>Forward • No. 10</p>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <img src="img/11-Raphinha.webp" class="d-block w-100 rounded" alt="Raphinha">
-                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                  <h5>Raphinha</h5>
-                  <p>Forward • No. 11</p>
-                </div>
-            </div>
-              
-            <div class="carousel-item">
-                <img src="img/16-Fermin.webp" class="d-block w-100 rounded" alt="López">
-                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                  <h5>Fermín López</h5>
-                  <p>Midfielder • No. 16</p>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <img src="img/21-De_Jong.webp" class="d-block w-100 rounded" alt="de Jong">
-                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                  <h5>Frenkie de Jong</h5>
-                  <p>Midfielder • No. 21</p>
-                </div>
-            </div>
-
-            <div class="carousel-item">
-                <img src="img/17-Casado.webp" class="d-block w-100 rounded" alt="Casadó">
-                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                  <h5>Marc Casadó</h5>
-                  <p>Midfielder  • No. 17</p>
-                </div>
-              </div>
-
-            <div class="carousel-item">
-              <img src="img/23-Kounde.webp" class="d-block w-100 rounded" alt="Kounde">
-              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                <h5>Jules Koundé</h5>
-                <p>Defender • No. 23</p>
+              <picture>
+                <source srcset="img/10-Lamine.webp" type="image/webp">
+                <img src="img/10-Lamine.webp" class="d-block w-100" alt="Lamine Yamal" loading="lazy">
+              </picture>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Lamine Yamal</h5>
+                <p>Forward • No. 10</p>
               </div>
             </div>
 
             <div class="carousel-item">
-              <img src="img/04-Araujo.webp" class="d-block w-100 rounded" alt="Araujo">
-              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                <h5>Ronald Araújo</h5>
-                <p>Defender • No. 4</p>
-              </div>
-            </div>
-
-            <div class="carousel-item">
-              <img src="img/24-Eric_Garcia.webp" class="d-block w-100 rounded" alt="Garcia">
-              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                <h5>Eric García</h5>
-                <p>Defender • No. 24</p>
-              </div>
-            </div>
-
-
-            <div class="carousel-item">
-                <img src="img/03-Balde.webp" class="d-block w-100 rounded" alt="Balde">
-                <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                  <h5>Alejandro Balde</h5>
-                  <p>Defender • No. 3</p>
-                </div>
-              </div>
-
-            <div class="carousel-item">
-              <img src="img/01-Joan_Garcia.webp" class="d-block w-100 rounded" alt="García">
-              <div class="carousel-caption bg-dark bg-opacity-50 rounded p-2">
-                <h5>Joan Garcia</h5>
-                <p>GoalKeeper • No. 1</p>
+              <picture>
+                <source srcset="img/11-Raphinha.webp" type="image/webp">
+                <img src="img/11-Raphinha.webp" class="d-block w-100" alt="Raphinha" loading="lazy">
+              </picture>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Raphinha</h5>
+                <p>Forward • No. 11</p>
               </div>
             </div>
           </div>
 
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselFirstTeam" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselFirstTeam" data-bs-slide="prev" aria-label="Previous player">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselFirstTeam" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselFirstTeam" data-bs-slide="next" aria-label="Next player">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
           </button>
         </div>
       </div>
     </section>
 
-    <!-- CLUB -->
-<section id="club" class="bg-white">
-    <div class="container text-center">
-      <h2>About the Club</h2>
-      <p>FC Barcelona didirikan pada 1899. Lebih dari klub — <strong>Més que un club</strong>.</p>
-      <div class="row g-4 align-items-stretch mt-4">
-  
-        <!-- Sejarah -->
-        <div class="col-md-4">
-          <div class="card h-100">
-            <img src="img/FC_Barcelona_1910.jpg" class="card-img-top" alt="Sejarah Klub">
-            <div class="card-body">
-              <h5 class="card-title">Sejarah</h5>
-              <p class="card-text">
-                Warisan panjang dan semangat Catalan yang tak tergoyahkan sejak 1899.
-              </p>
+    <!-- CLUB SECTION with Charts -->
+    <section id="club" aria-labelledby="club-heading">
+      <div class="container">
+        <div class="row align-items-center mb-4">
+          <div class="col-md-8">
+            <h2 id="club-heading">About the Club</h2>
+            <p>FC Barcelona didirikan pada 1899. Lebih dari klub — <strong>Més que un club</strong>.</p>
+            <p class="small-muted">Statistik internal: visualisasi data trofi & performa musiman (data statis demo — nanti terhubung ke basis data).</p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <button id="openStatsBtn" class="btn btn-outline-primary btn-sm">Lihat Statistik Lengkap</button>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-4">
+            <div class="card p-3 h-100 fade-in-up" data-animate>
+              <img src="img/FC_Barcelona_1910.jpg" class="card-img-top" alt="Sejarah Klub" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title">Sejarah</h5>
+                <p class="card-text">Warisan panjang dan semangat Catalan yang tak tergoyahkan sejak 1899.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card p-3 h-100 d-flex flex-column justify-content-center align-items-stretch fade-in-up" data-animate>
+              <div class="mb-3 text-center">
+                <h6 class="mb-0">Distribusi Trofi</h6>
+                <small class="d-block small-muted">Jumlah per kompetisi (data statis)</small>
+              </div>
+              <canvas id="trophyChart" width="400" height="300" aria-label="Grafik distribusi trofi"></canvas>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="card p-3 h-100 fade-in-up" data-animate>
+              <img src="img/1.-La-Masia.jpg" class="card-img-top" alt="La Masia" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title">La Masia</h5>
+                <p class="card-text">Akademi legendaris penghasil pemain hebat seperti Messi, Xavi, dan Iniesta.</p>
+              </div>
             </div>
           </div>
         </div>
-  
-        <!-- Stadium -->
-        <div class="col-md-4">
-          <div class="card h-100">
-            <img src="img/stadion.webp" class="card-img-top" alt="Stadium Spotify Camp Nou">
-            <div class="card-body">
-              <h5 class="card-title">Stadium</h5>
-              <p class="card-text">
-                Spotify Camp Nou, stadion megah dengan kapasitas lebih dari 99.000 penonton.
-              </p>
-            </div>
-          </div>
-        </div>
-  
-        <!-- La Masia -->
-        <div class="col-md-4">
-          <div class="card h-100">
-            <img src="img/1.-La-Masia.jpg" class="card-img-top" alt="Akademi La Masia">
-            <div class="card-body">
-              <h5 class="card-title">La Masia</h5>
-              <p class="card-text">
-                Akademi legendaris penghasil pemain hebat seperti Messi, Xavi, dan Iniesta.
-              </p>
-            </div>
-          </div>
-        </div>
-  
       </div>
-    </div>
-  </section>
+    </section>
 
     <!-- TROPHY -->
-<section id="trophy" class="bg-white text-center">
-    <div class="container">
-      <h2>Our Trophies</h2>
-      <p>Kebanggaan FC Barcelona — koleksi piala terbesar di dunia sepak bola.</p>
-  
-      <div class="row g-4 justify-content-center">
-        <!-- Liga Champions -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card shadow-sm border-0 h-100">
-            <img src="img/uefa.webp" class="card-img-top" alt="UEFA Champions League Trophy">
-            <div class="card-body">
-              <h5 class="card-title">UEFA Champions League</h5>
-              <p class="card-text">5 Titles<br><small>(1992, 2006, 2009, 2011, 2015)</small></p>
+    <section id="trophy" aria-labelledby="trophy-heading">
+      <div class="container text-center">
+        <h2 id="trophy-heading">Our Trophies</h2>
+        <p>Kebanggaan FC Barcelona — koleksi piala yang kaya sejarah.</p>
+
+        <div class="row g-4 justify-content-center mt-3">
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm h-100">
+              <img src="img/uefa.webp" class="card-img-top" alt="Champions League" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title">UEFA Champions League</h5>
+                <p class="card-text">5 Titles<br><small>(1992, 2006, 2009, 2011, 2015)</small></p>
+              </div>
             </div>
           </div>
-        </div>
-  
-        <!-- La Liga -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card shadow-sm border-0 h-100">
-            <img src="img/laligaaa.webp" class="card-img-top" alt="La Liga Trophy">
-            <div class="card-body">
-              <h5 class="card-title">La Liga</h5>
-              <p class="card-text">27 Titles<br><small>Terakhir: 2022/23</small></p>
+
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm h-100">
+              <img src="img/laligaaa.webp" class="card-img-top" alt="La Liga" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title">La Liga</h5>
+                <p class="card-text">27 Titles<br><small>Terakhir: 2022/23</small></p>
+              </div>
             </div>
           </div>
-        </div>
-  
-        <!-- Copa del Rey -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card shadow-sm border-0 h-100">
-            <img src="img/supercopa.jpg" class="card-img-top" alt="Copa del Rey Trophy">
-            <div class="card-body">
-              <h5 class="card-title">Copa del Rey</h5>
-              <p class="card-text">31 Titles<br><small>Rekor terbanyak di Spanyol</small></p>
+
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm h-100">
+              <img src="img/supercopa.jpg" class="card-img-top" alt="Copa del Rey" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title">Copa del Rey</h5>
+                <p class="card-text">31 Titles<br><small>Rekor terbanyak di Spanyol</small></p>
+              </div>
             </div>
           </div>
-        </div>
-  
-        <!-- Spanish Super Cup -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card shadow-sm border-0 h-100">
-            <img src="img/super.webp" class="card-img-top" alt="Supercopa de España Trophy">
-            <div class="card-body">
-              <h5 class="card-title">Supercopa de España</h5>
-              <p class="card-text">14 Titles<br><small>Terakhir: 2023</small></p>
-            </div>
-          </div>
-        </div>
-  
-        <!-- FIFA Club World Cup -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card shadow-sm border-0 h-100">
-            <img src="img/fifa wc.jpg" class="card-img-top" alt="FIFA Club World Cup Trophy">
-            <div class="card-body">
-              <h5 class="card-title">FIFA Club World Cup</h5>
-              <p class="card-text">3 Titles<br><small>(2009, 2011, 2015)</small></p>
-            </div>
-          </div>
-        </div>
-  
-        <!-- UEFA Super Cup -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card shadow-sm border-0 h-100">
-            <img src="img/uefa super.jpg" class="card-img-top" alt="UEFA Super Cup Trophy">
-            <div class="card-body">
-              <h5 class="card-title">UEFA Super Cup</h5>
-              <p class="card-text">5 Titles<br><small>(1992, 1997, 2009, 2011, 2015)</small></p>
-            </div>
-          </div>
-        </div>
-  
-        <!-- Joan Gamper Trophy -->
-        <div class="col-sm-6 col-md-4 col-lg-3">
-          <div class="card shadow-sm border-0 h-100">
-            <img src="img/gamper.webp" class="card-img-top" alt="Joan Gamper Trophy">
-            <div class="card-body">
-              <h5 class="card-title">Joan Gamper Trophy</h5>
-              <p class="card-text">44 Titles<br><small>Turnamen pramusim tahunan Barça</small></p>
+
+          <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card shadow-sm h-100">
+              <img src="img/super.webp" class="card-img-top" alt="Supercopa de España" loading="lazy">
+              <div class="card-body">
+                <h5 class="card-title">Supercopa de España</h5>
+                <p class="card-text">14 Titles<br><small>Terakhir: 2023</small></p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  
+    </section>
 
     <!-- TICKETS -->
-<section id="tickets" class="bg-light">
-    <div class="container">
-      <h2>Tickets & Match Schedule</h2>
-      <p>Dukung Barça langsung dari stadion! Lihat jadwal pertandingan terbaru dan pesan tiket resmi di sini.</p>
-  
-      <!-- Jadwal Pertandingan -->
-      <div class="card shadow-sm mb-4">
-        <div class="card-body">
-          <h5 class="card-title text-center mb-3">Jadwal Pertandingan FC Barcelona 2025</h5>
-          <div class="table-responsive">
-            <table class="table table-bordered align-middle">
-              <thead class="table-primary text-center">
-                <tr>
-                  <th>Tanggal</th>
-                  <th>Kompetisi</th>
-                  <th>Pertandingan</th>
-                  <th>Lokasi</th>
-                  <th>Jam (WIB)</th>
-                </tr>
-              </thead>
-              <tbody class="text-center">
-                <tr>
-                  <td>10 November 2025</td>
-                  <td>La Liga</td>
-                  <td>Barcelona vs Real Betis</td>
-                  <td>Camp Nou</td>
-                  <td>03:00</td>
-                </tr>
-                <tr>
-                  <td>17 November 2025</td>
-                  <td>La Liga</td>
-                  <td>Atletico Madrid vs Barcelona</td>
-                  <td>Wanda Metropolitano</td>
-                  <td>02:00</td>
-                </tr>
-                <tr>
-                  <td>23 November 2025</td>
-                  <td>UEFA Champions League</td>
-                  <td>Barcelona vs Bayern Munich</td>
-                  <td>Camp Nou</td>
-                  <td>03:00</td>
-                </tr>
-                <tr>
-                  <td>30 November 2025</td>
-                  <td>La Liga</td>
-                  <td>Barcelona vs Girona</td>
-                  <td>Camp Nou</td>
-                  <td>22:15</td>
-                </tr>
-                <tr>
-                  <td>7 Desember 2025</td>
-                  <td>La Liga</td>
-                  <td>Real Madrid vs Barcelona (El Clásico)</td>
-                  <td>Santiago Bernabéu</td>
-                  <td>02:45</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-  
-      <!-- Pemesanan Tiket -->
-      <div class="row g-3">
-        <div class="col-md-6">
-          <div class="card p-3 shadow-sm h-100">
-            <h5>Beli Tiket Pertandingan Berikutnya</h5>
-            <p><strong>Barcelona vs Real Betis</strong><br><small>Camp Nou — 10 November 2025</small></p>
-  
-            <form>
-              <div class="mb-3">
-                <label class="form-label">Kategori Tiket</label>
-                <select class="form-select">
-                  <option>Standard (€45)</option>
-                  <option>Premium (€90)</option>
-                  <option>VIP (€180)</option>
-                </select>
-              </div>
-  
-              <div class="mb-3">
-                <label class="form-label">Jumlah</label>
-                <input type="number" class="form-control" min="1" max="10" value="1">
-              </div>
-  
-              <div class="d-grid gap-2">
-                <button type="button" class="btn btn-custom">Pesan Sekarang</button>
-                <button type="button" class="btn btn-outline-secondary">Lihat Peta Kursi</button>
-              </div>
-            </form>
-          </div>
-        </div>
-  
-        <div class="col-md-6">
-          <div class="card p-3 shadow-sm h-100">
-            <h5>Informasi Tiket</h5>
-            <ul>
-              <li>Pemesanan resmi melalui kanal FC Barcelona.</li>
-              <li>Tiket elektronik dikirim melalui email terdaftar.</li>
-              <li>Harga bervariasi tergantung kategori dan posisi tempat duduk.</li>
-              <li>Anak-anak di bawah 5 tahun masuk gratis dengan pendamping.</li>
-            </ul>
-            <a href="#" class="btn btn-outline-primary mt-auto">Lihat Semua Jadwal</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-
- <!-- NEWS & UPDATES -->
- <section id="news" class="text-center">
-    <div class="container">
-      <h2>News & Match Updates</h2>
-      <p>Ikuti hasil pertandingan terbaru dan berita terkini FC Barcelona musim 2024/2025.</p>
-
-      <div class="row gy-4 mt-4">
-        <!-- Match 1 -->
-        <div class="col-md-4">
-          <div class="match-card">
-            <h5>La Liga - 2 November 2025</h5>
-            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
-              <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca">
-              <div class="score">3 - 1</div>
-              <img src="img/sevila.png" class="team-logo" alt="Sevilla">
-            </div>
-            <p class="mt-3">Barça unggul lewat gol dari Lewandowski, Yamal, dan Raphinha.</p>
-          </div>
-        </div>
-
-        <!-- Match 2 -->
-        <div class="col-md-4">
-          <div class="match-card">
-            <h5>Champions League - 29 Oktober 2025</h5>
-            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
-              <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca">
-              <div class="score">2 - 0</div>
-              <img src="img/inter-milan-new-20216579.jpg" class="team-logo" alt="Inter Milan">
-            </div>
-            <p class="mt-3">Pedri dan Gavi mencetak gol dalam kemenangan meyakinkan atas Inter.</p>
-          </div>
-        </div>
-
-        <!-- Match 3 -->
-        <div class="col-md-4">
-          <div class="match-card">
-            <h5>La Liga - 25 Oktober 2025</h5>
-            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
-              <img src="img/madrid.webp
-              " class="team-logo" alt="Real Madrid">
-              <div class="score">1 - 1</div>
-              <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca">
-            </div>
-            <p class="mt-3">El Clásico berakhir imbang lewat gol cepat Lewandowski di menit 15.</p>
-          </div>
-        </div>
-      </div>
-
-      <a href="#" class="btn btn-custom mt-4">Lihat Semua Berita</a>
-    </div>
-  </section>
-
-    <!-- CULERS -->
-    <section id="culers" class="bg-white text-center">
+    <section id="tickets" aria-labelledby="tickets-heading">
       <div class="container">
-        <h2>Culers Community</h2>
-        <p>Bergabung dan dapatkan berita eksklusif Barça!</p>
-        <form class="row justify-content-center g-2">
-          <div class="col-md-5"><input type="email" class="form-control" placeholder="Email" required></div>
-          <div class="col-md-2"><button class="btn btn-custom w-100" type="submit" data-bs-toggle="modal" data-bs-target="#joinModal">Gabung</button></div>
+        <div class="row align-items-center mb-3">
+          <div class="col-md-8">
+            <h2 id="tickets-heading">Tickets & Match Schedule</h2>
+            <p class="small-muted">Dukung Barça langsung dari stadion — pesan tiket resmi (demo).</p>
+          </div>
+          <div class="col-md-4 text-md-end">
+            <button id="openNextMatchModal" class="btn btn-custom btn-sm">Beli untuk Pertandingan Berikutnya</button>
+          </div>
+        </div>
+
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-3">Jadwal Pertandingan FC Barcelona 2025</h5>
+            <div class="table-responsive">
+              <table class="table table-bordered align-middle">
+                <thead class="text-center">
+                  <tr>
+                    <th>Tanggal</th><th>Kompetisi</th><th>Pertandingan</th><th>Lokasi</th><th>Jam (WIB)</th>
+                  </tr>
+                </thead>
+                <tbody class="text-center">
+                  <tr><td>10 November 2025</td><td>La Liga</td><td>Barcelona vs Real Betis</td><td>Camp Nou</td><td>03:00</td></tr>
+                  <tr><td>17 November 2025</td><td>La Liga</td><td>Atletico Madrid vs Barcelona</td><td>Wanda Metropolitano</td><td>02:00</td></tr>
+                  <tr><td>23 November 2025</td><td>UEFA Champions League</td><td>Barcelona vs Bayern Munich</td><td>Camp Nou</td><td>03:00</td></tr>
+                  <tr><td>30 November 2025</td><td>La Liga</td><td>Barcelona vs Girona</td><td>Camp Nou</td><td>22:15</td></tr>
+                  <tr><td>7 Desember 2025</td><td>La Liga</td><td>Real Madrid vs Barcelona</td><td>Santiago Bernabéu</td><td>02:45</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="card p-3 h-100">
+              <h5>Beli Tiket Pertandingan Berikutnya</h5>
+              <p class="small-muted"><strong>Barcelona vs Real Betis</strong> — Camp Nou • 10 November 2025</p>
+
+              <form id="ticketForm" class="row g-3" aria-label="Form pembelian tiket">
+                <div class="col-12">
+                  <label for="ticketCategory" class="form-label">Kategori Tiket</label>
+                  <select id="ticketCategory" class="form-select" aria-required="true">
+                    <option value="45">Standard (€45)</option>
+                    <option value="90">Premium (€90)</option>
+                    <option value="180">VIP (€180)</option>
+                  </select>
+                </div>
+
+                <div class="col-6">
+                  <label for="ticketCount" class="form-label">Jumlah</label>
+                  <input id="ticketCount" type="number" class="form-control" min="1" max="10" value="1" aria-required="true">
+                </div>
+
+                <div class="col-6">
+                  <label for="promoCode" class="form-label">Kode Promo</label>
+                  <input id="promoCode" type="text" class="form-control" placeholder="(opsional)">
+                </div>
+
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                  <div>
+                    <small class="small-muted">Total Estimasi:</small>
+                    <div id="ticketTotal" class="fw-bold">€45</div>
+                  </div>
+                  <div class="d-grid gap-2 d-md-flex">
+                    <button type="button" id="previewSeatMap" class="btn btn-outline-secondary">Lihat Peta Kursi</button>
+                    <button type="submit" class="btn btn-custom">Pesan Sekarang</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="card p-3 h-100">
+              <h5>Informasi Tiket</h5>
+              <ul>
+                <li>Pemesanan resmi melalui kanal FC Barcelona (demo).</li>
+                <li>Tiket elektronik dikirim melalui email terdaftar.</li>
+                <li>Anak-anak di bawah 5 tahun masuk gratis dengan pendamping.</li>
+              </ul>
+              <a href="#tickets" class="btn btn-outline-primary mt-auto">Lihat Semua Jadwal</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWS & UPDATES -->
+    <section id="news" aria-labelledby="news-heading">
+      <div class="container text-center">
+        <h2 id="news-heading">News & Match Updates</h2>
+        <p class="small-muted">Ikuti hasil pertandingan dan berita terkini musim 2024/2025.</p>
+
+        <div class="row gy-4 mt-3 mb-2">
+          <div class="col-md-4">
+            <div class="match-card card p-3 h-100">
+              <h6>La Liga - 2 November 2025</h6>
+              <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca" loading="lazy">
+                <div class="score">3 - 1</div>
+                <img src="img/sevila.png" class="team-logo" alt="Sevilla" loading="lazy">
+              </div>
+              <p class="mt-3 small-muted">Barça unggul lewat gol dari Lewandowski, Yamal, dan Raphinha.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="match-card card p-3 h-100">
+              <h6>Champions League - 29 Oktober 2025</h6>
+              <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca" loading="lazy">
+                <div class="score">2 - 0</div>
+                <img src="img/inter-milan-new-20216579.jpg" class="team-logo" alt="Inter Milan" loading="lazy">
+              </div>
+              <p class="mt-3 small-muted">Pedri dan Gavi mencetak gol dalam kemenangan meyakinkan atas Inter.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="match-card card p-3 h-100">
+              <h6>La Liga - 25 Oktober 2025</h6>
+              <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                <img src="img/madrid.webp" class="team-logo" alt="Real Madrid" loading="lazy">
+                <div class="score">1 - 1</div>
+                <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca" loading="lazy">
+              </div>
+              <p class="mt-3 small-muted">El Clásico berakhir imbang lewat gol cepat Lewandowski di menit 15.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center gap-2">
+          <button id="filterAll" class="btn btn-sm btn-outline-secondary">Semua</button>
+          <button id="filterLaLiga" class="btn btn-sm btn-outline-secondary">La Liga</button>
+          <button id="filterUCL" class="btn btn-sm btn-outline-secondary">Champions</button>
+        </div>
+
+        <div class="mt-4">
+          <a href="#" class="btn btn-custom">Lihat Semua Berita</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CULERS COMMUNITY -->
+    <section id="culers" aria-labelledby="culers-heading">
+      <div class="container text-center">
+        <h2 id="culers-heading">Culers Community</h2>
+        <p>Gabung dan dapatkan berita eksklusif Barça!</p>
+
+        <form id="joinForm" class="row justify-content-center g-2" aria-label="Form bergabung komunitas">
+          <div class="col-md-5">
+            <input id="emailInput" type="email" class="form-control" placeholder="Email" required aria-required="true" />
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-custom w-100">Gabung</button>
+          </div>
         </form>
       </div>
     </section>
+  </main>
 
-    <!-- Modal Join -->
-    <div class="modal fade" id="joinModal" tabindex="-1">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header"><h5 class="modal-title">Selamat Datang!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
-          <div class="modal-body">Terima kasih telah bergabung dengan komunitas Culers (demo).</div>
-          <div class="modal-footer"><button class="btn btn-custom" data-bs-dismiss="modal">OK</button></div>
+  <!-- MODALS -->
+  <!-- Ticket Preview / Seat Map Modal -->
+  <div class="modal fade" id="seatMapModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Peta Kursi — Camp Nou (Demo)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="small-muted">Klik area untuk memilih (demo).</p>
+          <div style="height:360px; background:linear-gradient(180deg,#f8f9fa,#e9eefc); border-radius:10px; display:flex;align-items:center;justify-content:center;">
+            <!-- Simple seat map illustration (placeholder) -->
+            <img src="img/seatmap.png" alt="Seat map" style="max-width:90%; max-height:90%;" loading="lazy">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-custom" id="confirmSeatBtn">Pilih & Lanjutkan</button>
         </div>
       </div>
     </div>
+  </div>
 
-  </main>
+  <!-- Toast container -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index:1055">
+    <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="toastBody">Pembelian berhasil!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
 
-  <!-- Bootstrap JS (diperlukan untuk komponen interaktif) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Scroll to Top -->
+  <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
+  <!-- FOOTER -->
+  <footer class="text-center">
+    <div class="container">
+      <p class="mb-0">© <span id="year"></span> FC Barcelona — Més que un club. Demo site.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts - defer parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="" crossorigin="anonymous" defer></script>
+
+  <script>
+  // Immediately-executed setup
+  (function(){
+    // Accessibility: set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle (dark mode) with localStorage
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    if(saved === 'dark'){ root.setAttribute('data-theme','dark'); themeToggle.textContent = 'Light'; themeToggle.setAttribute('aria-pressed','true'); }
+    else { root.removeAttribute('data-theme'); themeToggle.textContent = 'Dark'; themeToggle.setAttribute('aria-pressed','false'); }
+
+    themeToggle.addEventListener('click', () => {
+      if(root.getAttribute('data-theme') === 'dark'){ root.removeAttribute('data-theme'); localStorage.setItem('theme','light'); themeToggle.textContent='Dark'; themeToggle.setAttribute('aria-pressed','false'); }
+      else { root.setAttribute('data-theme','dark'); localStorage.setItem('theme','dark'); themeToggle.textContent='Light'; themeToggle.setAttribute('aria-pressed','true'); }
+    });
+
+    // Lazy animate elements into view
+    const observers = [];
+    const animateEls = document.querySelectorAll('[data-animate]');
+    if('IntersectionObserver' in window){
+      const animObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach(en => {
+          if(en.isIntersecting){ en.target.classList.add('visible'); obs.unobserve(en.target); }
+        });
+      }, {threshold:0.15});
+      animateEls.forEach(el=>animObs.observe(el));
+    } else { animateEls.forEach(e=>e.classList.add('visible')); }
+
+    // Navbar active with IntersectionObserver for accuracy
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('main section[id]');
+    const navCollapse = document.getElementById('navbarContent');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = document.querySelector('.nav-link[href="#' + id + '"]');
+        if(entry.isIntersecting){
+          navLinks.forEach(l=>l.classList.remove('active'));
+          if(link) link.classList.add('active');
+        }
+      });
+    }, {root:null, rootMargin:'-120px 0px -60% 0px', threshold:0.2});
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // Auto-collapse mobile navbar after click
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        // collapse if open
+        const bs = bootstrap.Collapse.getInstance(navCollapse);
+        if(bs) bs.hide();
+      });
+    });
+
+    // Scroll to top button
+    const scrollBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if(document.documentElement.scrollTop > 220) scrollBtn.style.display = 'flex';
+      else scrollBtn.style.display = 'none';
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+    // Chart.js trophies: bar + pie toggle on click
+    const trophyCtx = document.getElementById('trophyChart').getContext('2d');
+    const trophyData = {
+      labels: ['La Liga', 'Copa del Rey', 'UCL', 'Supercopa', 'Club WC', 'UEFA Super'],
+      datasets: [{
+        label: 'Jumlah Trofi',
+        data: [27, 31, 5, 14, 3, 5],
+        backgroundColor: ['#004d98','#a50044','#f6c84c','#0f9d58','#8e44ad','#e67e22'],
+        borderRadius: 6
+      }]
+    };
+    let trophyChart = new Chart(trophyCtx, {
+      type: 'bar',
+      data: trophyData,
+      options: {
+        responsive:true,
+        plugins:{ legend:{ display:false }, tooltip:{ mode:'index' } },
+        scales:{ y:{ beginAtZero:true } },
+        animation: { duration: 800, easing: 'easeOutQuart' }
+      }
+    });
+
+    // Toggle chart type on clicking canvas
+    let chartIsBar = true;
+    document.getElementById('trophyChart').addEventListener('click', () => {
+      trophyChart.destroy();
+      chartIsBar = !chartIsBar;
+      trophyChart = new Chart(trophyCtx, {
+        type: chartIsBar ? 'bar' : 'pie',
+        data: trophyData,
+        options: chartIsBar ? {
+          responsive:true, plugins:{legend:{display:false}}, scales:{y:{beginAtZero:true}}
+        } : { responsive:true, plugins:{legend:{position:'bottom'}} }
+      });
+    });
+
+    // Ticket form logic: update total, validate, modal purchase flow
+    const ticketCategory = document.getElementById('ticketCategory');
+    const ticketCount = document.getElementById('ticketCount');
+    const ticketTotal = document.getElementById('ticketTotal');
+    const promoCode = document.getElementById('promoCode');
+    const ticketForm = document.getElementById('ticketForm');
+    const seatMapModal = new bootstrap.Modal(document.getElementById('seatMapModal'));
+    const liveToastEl = document.getElementById('liveToast');
+    const liveToast = new bootstrap.Toast(liveToastEl, { delay: 4000 });
+
+    function calcTotal(){
+      const price = Number(ticketCategory.value || 0);
+      let qty = Number(ticketCount.value || 0);
+      if(qty < 1) qty = 1;
+      // Promo example: if code 'BARCA10' -> 10% off
+      let total = price * qty;
+      const code = promoCode.value.trim().toUpperCase();
+      if(code === 'BARCA10'){ total = total * 0.9; }
+      ticketTotal.textContent = `€${total.toFixed(2)}`;
+      return total;
+    }
+    // update on change
+    [ticketCategory, ticketCount, promoCode].forEach(el => el.addEventListener('input', calcTotal));
+    // initial calc
+    calcTotal();
+
+    // Seat map preview
+    document.getElementById('previewSeatMap').addEventListener('click', ()=> seatMapModal.show());
+    document.getElementById('openNextMatchModal').addEventListener('click', ()=> {
+      // prefill default selection and open purchase modal (we reuse seatMap for demo)
+      seatMapModal.show();
+    });
+    document.getElementById('confirmSeatBtn').addEventListener('click', ()=> {
+      seatMapModal.hide();
+      const price = calcTotal();
+      document.getElementById('toastBody').textContent = `Kursi dipilih. Estimasi biaya €${price.toFixed(2)} — lanjutkan untuk menyelesaikan pembayaran (demo).`;
+      liveToast.show();
+    });
+
+    ticketForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const qty = Number(ticketCount.value);
+      if(isNaN(qty) || qty < 1 || qty > 10){
+        alert('Jumlah tiket harus antara 1 dan 10.');
+        ticketCount.focus();
+        return;
+      }
+      // Simulate successful booking
+      const total = calcTotal();
+      document.getElementById('toastBody').textContent = `✅ Pemesanan Berhasil! Total: €${total.toFixed(2)}. E-ticket akan dikirim (demo).`;
+      liveToast.show();
+      // reset form lightly
+      // ticketForm.reset(); calcTotal();
+    });
+
+    // Join community form
+    document.getElementById('joinForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value.trim();
+      if(!email || !email.includes('@')){ alert('Masukkan email yang valid.'); return; }
+      document.getElementById('toastBody').textContent = `Terima kasih! Email ${email} telah ditambahkan ke Culers (demo).`;
+      liveToast.show();
+      document.getElementById('emailInput').value = '';
+    });
+
+    // News filter + search
+    const newsCards = Array.from(document.querySelectorAll('#news .match-card'));
+    document.getElementById('filterAll').addEventListener('click', ()=> showNewsFiltered(() => true));
+    document.getElementById('filterLaLiga').addEventListener('click', ()=> showNewsFiltered(el => el.querySelector('h6').textContent.includes('La Liga')));
+    document.getElementById('filterUCL').addEventListener('click', ()=> showNewsFiltered(el => el.querySelector('h6').textContent.includes('Champions')));
+
+    function showNewsFiltered(predicate){
+      newsCards.forEach(card => { card.closest('.col-md-4').style.display = predicate(card) ? '' : 'none'; });
+    }
+
+    // Search input: filter news live
+    const searchInput = document.getElementById('newsSearch');
+    if(searchInput){
+      searchInput.addEventListener('input', (e)=>{
+        const q = e.target.value.trim().toLowerCase();
+        newsCards.forEach(card=>{
+          const text = card.textContent.toLowerCase();
+          card.closest('.col-md-4').style.display = q === '' || text.includes(q) ? '' : 'none';
+        });
+      });
+      // quick focus via keyboard 's'
+      window.addEventListener('keydown', (ev)=>{
+        if(ev.key === 's' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA'){
+          ev.preventDefault(); searchInput.focus();
+        }
+      });
+    }
+
+    // small UX: pressing Enter on promo applies code check visual
+    promoCode.addEventListener('keyup', (e) => { if(e.key === 'Enter') { calcTotal(); } });
+
+    // small performance: preconnect common origins (images, cdn) - insert link tags
+    const preconnects = ['https://fonts.gstatic.com','https://cdn.jsdelivr.net'];
+    preconnects.forEach(u => { const l = document.createElement('link'); l.rel = 'preconnect'; l.href = u; l.crossOrigin = ''; document.head.appendChild(l); });
+
+    // Keyboard accessibility: Escape closes modals by default via bootstrap
+
+    // Final: ensure charts redraw on resize (better responsiveness)
+    window.addEventListener('resize', ()=> { if(trophyChart) trophyChart.resize(); });
+
+  })();
+  </script>
 </body>
 </html>
