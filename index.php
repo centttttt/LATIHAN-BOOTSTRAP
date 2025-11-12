@@ -1,0 +1,1126 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FC Barcelona — Official Page</title>
+    <meta name="description"
+        content="Situs demo FC Barcelona — berita, jadwal, tiket, dan statistik. Més que un club." />
+    <meta name="author" content="FC Barcelona Demo" />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="FC Barcelona — Official Page" />
+    <meta property="og:description" content="Situs demo FC Barcelona — berita, jadwal, tiket, dan statistik." />
+    <meta property="og:image" content="img/og-image.jpg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Structured Data (Organization) -->
+    <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"SportsTeam",
+    "name":"FC Barcelona (Demo)",
+    "url":"https://example.com",
+    "logo":"https://example.com/img/barcelona-removebg-preview.png",
+    "foundingDate":"1899",
+    "sport":"Soccer"
+  }
+  </script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity=""
+        crossorigin="anonymous">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --blue: #004d98;
+            --maroon: #a50044;
+            --muted: #6c757d;
+            --glass: rgba(255, 255, 255, 0.08);
+            --radius: 14px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            background: linear-gradient(180deg, #fafafa 0%, #f4f7fb 100%);
+            color: #222;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR */
+        .navbar-dua-warna {
+            background: linear-gradient(90deg, var(--blue) 50%, var(--maroon) 50%);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .navbar-brand img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.94);
+            transition: .18s;
+        }
+
+        .nav-link:hover {
+            opacity: .95;
+            transform: translateY(-1px);
+        }
+
+        .nav-link.active {
+            font-weight: 700;
+            text-decoration: underline 3px solid rgba(255, 255, 255, 0.18);
+        }
+
+        main {
+            margin-top: 86px;
+        }
+
+        section {
+            padding: 72px 0;
+            scroll-margin-top: 100px;
+        }
+
+        h2 {
+            color: var(--blue);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        /* Cards */
+        .card {
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+            overflow: hidden;
+        }
+
+        .card .card-img-top {
+            object-fit: cover;
+            height: 180px;
+        }
+
+        /* Buttons */
+        .btn-custom {
+            background: var(--maroon);
+            color: #fff;
+            border: none;
+            font-weight: 700;
+            border-radius: 10px;
+        }
+
+        .btn-custom:hover {
+            filter: brightness(.95)
+        }
+
+        /* First team hero */
+        #firstteam {
+            background-image: url('img/SET_Jugadors.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+        }
+
+        #firstteam::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55));
+        }
+
+        #firstteam .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Carousel captions */
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.45);
+            border-radius: 10px;
+            padding: 8px 12px;
+        }
+
+        /* News match card */
+        .match-card {
+            text-align: center;
+        }
+
+        .match-card h6 {
+            color: var(--blue);
+            font-weight: 600;
+        }
+
+        .team-logo {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+        }
+
+        .score {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--blue);
+            width: 84px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Tickets */
+        table.table thead th {
+            background: linear-gradient(90deg, rgba(0, 77, 152, 0.95), rgba(165, 0, 68, 0.85));
+            color: #fff;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--blue);
+            color: #fff;
+            padding: 20px 0;
+            margin-top: 48px;
+        }
+
+        /* Scroll to top */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            z-index: 999;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: none;
+            background: var(--blue);
+            color: #fff;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            cursor: pointer;
+        }
+
+        /* Small UI niceties */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(12px);
+            transition: all .6s cubic-bezier(.2, .8, .2, 1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Dark mode support toggle */
+        :root[data-theme="dark"] {
+            --bg: #0b1220;
+            --surface: #0f1724;
+            --muted: #9aa4b2;
+            --text: #e6eef6;
+        }
+
+        :root[data-theme="dark"] body {
+            background: linear-gradient(180deg, #04102b 0%, #071330 100%);
+            color: var(--text);
+        }
+
+        :root[data-theme="dark"] .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            box-shadow: none;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        :root[data-theme="dark"] footer {
+            background: #031733;
+        }
+
+        /* Responsive image helper */
+        img[loading="lazy"] {
+            filter: none;
+        }
+
+        /* Accessibility focus */
+        a:focus,
+        button:focus,
+        input:focus {
+            outline: 3px dashed rgba(0, 77, 152, 0.18);
+            outline-offset: 3px;
+        }
+
+        /* Utilities */
+        .small-muted {
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        @media (max-width:768px) {
+            .navbar-brand img {
+                width: 52px;
+                height: 52px;
+            }
+
+            #firstteam {
+                min-height: 340px;
+                padding: 28px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-dua-warna fixed-top" role="navigation"
+        aria-label="Main navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#" aria-label="FC Barcelona Home">
+                <img src="img/barcelona-removebg-preview.png" alt="Barcelona logo" loading="lazy">
+                <span class="ms-2 d-none d-md-inline" style="font-weight:700; color:#fff;">FC Barcelona</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#firstteam">First Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#club">Club</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#trophy">Trophy</a></li>
+                </ul>
+
+                <form class="d-flex align-items-center me-3" role="search" onsubmit="return false;">
+                    <input id="newsSearch" class="form-control form-control-sm me-2" type="search"
+                        placeholder="Cari berita..." aria-label="Cari berita" />
+                </form>
+
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#tickets">Tickets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#culers">Culers</a></li>
+                </ul>
+
+                <div class="d-flex align-items-center ms-3 gap-2">
+                    <button id="themeToggle" class="btn btn-sm btn-outline-light" title="Toggle dark mode"
+                        aria-pressed="false">Dark</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- FIRST TEAM HERO -->
+        <section id="firstteam" aria-labelledby="firstteam-heading">
+            <div class="container text-center text-white">
+                <h2 id="firstteam-heading" class="mb-2">First Team</h2>
+                <p class="lead mb-4">Geser untuk melihat Starting XI FC Barcelona musim 2024/2025.</p>
+
+                <div id="carouselFirstTeam" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3200"
+                    aria-label="Carousel pemain">
+                    <div class="carousel-inner rounded">
+                        <div class="carousel-item active">
+                            <picture>
+                                <source srcset="img/09-Lewandowski.webp" type="image/webp">
+                                <img src="img/09-Lewandowski.webp" class="d-block w-100" alt="Robert Lewandowski"
+                                    loading="lazy">
+                            </picture>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Robert Lewandowski</h5>
+                                <p>Forward • No. 9</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <picture>
+                                <source srcset="img/10-Lamine.webp" type="image/webp">
+                                <img src="img/10-Lamine.webp" class="d-block w-100" alt="Lamine Yamal" loading="lazy">
+                            </picture>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Lamine Yamal</h5>
+                                <p>Forward • No. 10</p>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item">
+                            <picture>
+                                <source srcset="img/11-Raphinha.webp" type="image/webp">
+                                <img src="img/11-Raphinha.webp" class="d-block w-100" alt="Raphinha" loading="lazy">
+                            </picture>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Raphinha</h5>
+                                <p>Forward • No. 11</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselFirstTeam"
+                        data-bs-slide="prev" aria-label="Previous player">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselFirstTeam"
+                        data-bs-slide="next" aria-label="Next player">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLUB SECTION with Charts -->
+        <section id="club" aria-labelledby="club-heading">
+            <div class="container">
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-8">
+                        <h2 id="club-heading">About the Club</h2>
+                        <p>FC Barcelona didirikan pada 1899. Lebih dari klub — <strong>Més que un club</strong>.</p>
+                        <p class="small-muted">Statistik internal: visualisasi data trofi & performa musiman (data
+                            statis demo — nanti terhubung ke basis data).</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <button id="openStatsBtn" class="btn btn-outline-primary btn-sm">Lihat Statistik
+                            Lengkap</button>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <?php
+                    // Koneksi ke database
+                    $servername = "localhost";
+                    $username = "root"; // sesuaikan
+                    $password = ""; // sesuaikan
+                    $dbname = "barcelona"; // ganti sesuai nama database kamu
+                    
+                    $conn = new mysqli($servername, $username, $password, $dbname);
+
+                    // Cek koneksi
+                    if ($conn->connect_error) {
+                        die("Koneksi gagal: " . $conn->connect_error);
+                    }
+
+                    // Ambil data hanya untuk bagian 'sejarah'
+                    $sql = "SELECT judul, keterangan, gambar FROM barcelona.about";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            // Gunakan data dari database
+                            echo '
+                                    <div class="col-lg-4">
+                                    <div class="card p-3 h-100 fade-in-up" data-animate>
+                                    <img src="img/' . htmlspecialchars($row["gambar"]) . '" class="card-img-top" alt="' . htmlspecialchars($row["judul"]) . '" loading="lazy">
+                                    <div class="card-body">
+                                    <h5 class="card-title">' . htmlspecialchars($row["judul"]) . '</h5>
+                                    <p class="card-text">' . htmlspecialchars($row["keterangan"]) . '</p>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    ';
+                        }
+                    } else {
+                        echo '<p class="text-center small-muted">Belum ada data sejarah klub.</p>';
+                    }
+
+                    $conn->close();
+                    ?>
+
+                    <div class="col-lg-4">
+                        <div class="card p-3 h-100 d-flex flex-column justify-content-center align-items-stretch fade-in-up"
+                            data-animate>
+                            <div class="mb-3 text-center">
+                                <h6 class="mb-0">Distribusi Trofi</h6>
+                                <small class="d-block small-muted">Jumlah per kompetisi (data statis)</small>
+                            </div>
+                            <canvas id="trophyChart" width="400" height="300"
+                                aria-label="Grafik distribusi trofi"></canvas>
+                        </div>
+                    </div>
+        </section>
+
+        <!-- TROPHY -->
+        <section id="trophy" aria-labelledby="trophy-heading">
+            <div class="container text-center">
+                <h2 id="trophy-heading">Our Trophies</h2>
+                <p>Kebanggaan FC Barcelona — koleksi piala yang kaya sejarah.</p>
+
+                <div class="row g-4 justify-content-center mt-3">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card shadow-sm h-100">
+                            <img src="img/uefa.webp" class="card-img-top" alt="Champions League" loading="lazy">
+                            <div class="card-body">
+                                <h5 class="card-title">UEFA Champions League</h5>
+                                <p class="card-text">5 Titles<br><small>(1992, 2006, 2009, 2011, 2015)</small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card shadow-sm h-100">
+                            <img src="img/laligaaa.webp" class="card-img-top" alt="La Liga" loading="lazy">
+                            <div class="card-body">
+                                <h5 class="card-title">La Liga</h5>
+                                <p class="card-text">27 Titles<br><small>Terakhir: 2022/23</small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card shadow-sm h-100">
+                            <img src="img/supercopa.jpg" class="card-img-top" alt="Copa del Rey" loading="lazy">
+                            <div class="card-body">
+                                <h5 class="card-title">Copa del Rey</h5>
+                                <p class="card-text">31 Titles<br><small>Rekor terbanyak di Spanyol</small></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card shadow-sm h-100">
+                            <img src="img/super.webp" class="card-img-top" alt="Supercopa de España" loading="lazy">
+                            <div class="card-body">
+                                <h5 class="card-title">Supercopa de España</h5>
+                                <p class="card-text">14 Titles<br><small>Terakhir: 2023</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TICKETS -->
+        <section id="tickets" aria-labelledby="tickets-heading">
+            <div class="container">
+                <div class="row align-items-center mb-3">
+                    <div class="col-md-8">
+                        <h2 id="tickets-heading">Tickets & Match Schedule</h2>
+                        <p class="small-muted">Dukung Barça langsung dari stadion — pesan tiket resmi (demo).</p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <button id="openNextMatchModal" class="btn btn-custom btn-sm">Beli untuk Pertandingan
+                            Berikutnya</button>
+                    </div>
+                </div>
+
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title text-center mb-3">Jadwal Pertandingan FC Barcelona 2025</h5>
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle">
+                                <thead class="text-center">
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Kompetisi</th>
+                                        <th>Pertandingan</th>
+                                        <th>Lokasi</th>
+                                        <th>Jam (WIB)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                    <?php
+                                    $conn = new mysqli("localhost", "root", "", "barcelona");
+                                    if ($conn->connect_error)
+                                        die("Koneksi gagal: " . $conn->connect_error);
+
+                                    $sql = "SELECT tanggal, kompetisi, pertandingan, lokasi, jam FROM jadwal ORDER BY tanggal ASC";
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            $tanggal = date("d F Y", strtotime($row["tanggal"]));
+                                            $jam = date("H:i", strtotime($row["jam"]));
+                                            echo "<tr>
+                          <td>{$tanggal}</td>
+                          <td>{$row["kompetisi"]}</td>
+                          <td>{$row["pertandingan"]}</td>
+                          <td>{$row["lokasi"]}</td>
+                          <td>{$jam}</td>
+                        </tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5' class='text-muted'>Belum ada jadwal pertandingan.</td></tr>";
+                                    }
+
+                                    $conn->close();
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="card p-3 h-100">
+                            <h4>Beli Tiket Pertandingan Berikutnya</h4>
+                            <p id="next-match" class="fw-bold text-primary"></p>
+
+                            <form id="ticketForm" class="row g-3" aria-label="Form pembelian tiket">
+                                <div class="col-12">
+                                    <label for="ticketCategory" class="form-label">Kategori Tiket</label>
+                                    <select id="ticketCategory" class="form-select" aria-required="true">
+                                        <option value="45">Standard (€45)</option>
+                                        <option value="90">Premium (€90)</option>
+                                        <option value="180">VIP (€180)</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="ticketCount" class="form-label">Jumlah</label>
+                                    <input id="ticketCount" type="number" class="form-control" min="1" max="10"
+                                        value="1" aria-required="true">
+                                </div>
+
+                                <div class="col-6">
+                                    <label for="promoCode" class="form-label">Kode Promo</label>
+                                    <input id="promoCode" type="text" class="form-control" placeholder="(opsional)">
+                                </div>
+
+                                <div class="col-12 d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <small class="small-muted">Total Estimasi:</small>
+                                        <div id="ticketTotal" class="fw-bold">€45</div>
+                                    </div>
+                                    <div class="d-grid gap-2 d-md-flex">
+                                        <button type="button" id="previewSeatMap"
+                                            class="btn btn-outline-secondary">Lihat Peta Kursi</button>
+                                        <button type="submit" class="btn btn-custom">Pesan Sekarang</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card p-3 h-100">
+                            <h5>Informasi Tiket</h5>
+                            <ul>
+                                <li>Pemesanan resmi melalui kanal FC Barcelona (demo).</li>
+                                <li>Tiket elektronik dikirim melalui email terdaftar.</li>
+                                <li>Anak-anak di bawah 5 tahun masuk gratis dengan pendamping.</li>
+                            </ul>
+                            <a href="#tickets" class="btn btn-outline-primary mt-auto">Lihat Semua Jadwal</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWS & UPDATES -->
+        <section id="news" aria-labelledby="news-heading">
+            <div class="container text-center">
+                <h2 id="news-heading">News & Match Updates</h2>
+                <p class="small-muted">Ikuti hasil pertandingan dan berita terkini musim 2024/2025.</p>
+
+                <div class="row gy-4 mt-3 mb-2">
+                    <div class="col-md-4">
+                        <div class="match-card card p-3 h-100">
+                            <h6>La Liga - 2 November 2025</h6>
+                            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                                <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca"
+                                    loading="lazy">
+                                <div class="score">3 - 1</div>
+                                <img src="img/sevila.png" class="team-logo" alt="Sevilla" loading="lazy">
+                            </div>
+                            <p class="mt-3 small-muted">Barça unggul lewat gol dari Lewandowski, Yamal, dan Raphinha.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="match-card card p-3 h-100">
+                            <h6>Champions League - 29 Oktober 2025</h6>
+                            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                                <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca"
+                                    loading="lazy">
+                                <div class="score">2 - 0</div>
+                                <img src="img/inter-milan-new-20216579.jpg" class="team-logo" alt="Inter Milan"
+                                    loading="lazy">
+                            </div>
+                            <p class="mt-3 small-muted">Pedri dan Gavi mencetak gol dalam kemenangan meyakinkan atas
+                                Inter.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="match-card card p-3 h-100">
+                            <h6>La Liga - 25 Oktober 2025</h6>
+                            <div class="d-flex justify-content-center align-items-center gap-3 mt-3">
+                                <img src="img/madrid.webp" class="team-logo" alt="Real Madrid" loading="lazy">
+                                <div class="score">1 - 1</div>
+                                <img src="img/barcelona-removebg-preview.png" class="team-logo" alt="Barca"
+                                    loading="lazy">
+                            </div>
+                            <p class="mt-3 small-muted">El Clásico berakhir imbang lewat gol cepat Lewandowski di menit
+                                15.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center gap-2">
+                    <button id="filterAll" class="btn btn-sm btn-outline-secondary">Semua</button>
+                    <button id="filterLaLiga" class="btn btn-sm btn-outline-secondary">La Liga</button>
+                    <button id="filterUCL" class="btn btn-sm btn-outline-secondary">Champions</button>
+                </div>
+
+                <div class="mt-4">
+                    <a href="#" class="btn btn-custom">Lihat Semua Berita</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CULERS COMMUNITY -->
+        <section id="culers" class="container py-5">
+            <h2 class="fw-bold text-center mb-4">Culers Community</h2>
+            <form id="joinForm" class="row g-3 justify-content-center">
+                <div class="col-md-4">
+                    <label for="nameInput" class="form-label">Nama Lengkap</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="emailInput" class="form-label">Email</label>
+                    <input type="email" id="emailInput" class="form-control" placeholder="Masukkan email aktif"
+                        required>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-custom px-4">Gabung Sekarang</button>
+                </div>
+            </form>
+
+            <!-- Toast (popup notifikasi sukses) -->
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+                <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body" id="toastBody">Terima kasih sudah bergabung!</div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto"
+                            data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODALS -->
+    <!-- Ticket Preview / Seat Map Modal -->
+    <div class="modal fade" id="seatMapModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Peta Kursi — Camp Nou (Demo)</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="small-muted">Klik area untuk memilih (demo).</p>
+                    <div
+                        style="height:360px; background:linear-gradient(180deg,#f8f9fa,#e9eefc); border-radius:10px; display:flex;align-items:center;justify-content:center;">
+                        <!-- Simple seat map illustration (placeholder) -->
+                        <img src="img/seatmap.png" alt="Seat map" style="max-width:90%; max-height:90%;" loading="lazy">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-custom" id="confirmSeatBtn">Pilih & Lanjutkan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index:1055">
+        <div id="liveToast" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="polite"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastBody">Pembelian berhasil!</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button id="scrollTopBtn" aria-label="Scroll to top">↑</button>
+
+    <!-- FOOTER -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">© <span id="year"></span> FC Barcelona — Més que un club. Demo site.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts - defer parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity=""
+        crossorigin="anonymous" defer></script>
+
+    <script>
+        // Immediately-executed setup
+        (function () {
+            // Accessibility: set current year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Theme toggle (dark mode) with localStorage
+            const themeToggle = document.getElementById('themeToggle');
+            const root = document.documentElement;
+            const saved = localStorage.getItem('theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (saved === 'dark') { root.setAttribute('data-theme', 'dark'); themeToggle.textContent = 'Light'; themeToggle.setAttribute('aria-pressed', 'true'); }
+            else { root.removeAttribute('data-theme'); themeToggle.textContent = 'Dark'; themeToggle.setAttribute('aria-pressed', 'false'); }
+
+            themeToggle.addEventListener('click', () => {
+                if (root.getAttribute('data-theme') === 'dark') { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'light'); themeToggle.textContent = 'Dark'; themeToggle.setAttribute('aria-pressed', 'false'); }
+                else { root.setAttribute('data-theme', 'dark'); localStorage.setItem('theme', 'dark'); themeToggle.textContent = 'Light'; themeToggle.setAttribute('aria-pressed', 'true'); }
+            });
+
+            // Lazy animate elements into view
+            const observers = [];
+            const animateEls = document.querySelectorAll('[data-animate]');
+            if ('IntersectionObserver' in window) {
+                const animObs = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(en => {
+                        if (en.isIntersecting) { en.target.classList.add('visible'); obs.unobserve(en.target); }
+                    });
+                }, { threshold: 0.15 });
+                animateEls.forEach(el => animObs.observe(el));
+            } else { animateEls.forEach(e => e.classList.add('visible')); }
+
+            // Navbar active with IntersectionObserver for accuracy
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('main section[id]');
+            const navCollapse = document.getElementById('navbarContent');
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const id = entry.target.id;
+                    const link = document.querySelector('.nav-link[href="#' + id + '"]');
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        if (link) link.classList.add('active');
+                    }
+                });
+            }, { root: null, rootMargin: '-120px 0px -60% 0px', threshold: 0.2 });
+            sections.forEach(s => sectionObserver.observe(s));
+
+            // Auto-collapse mobile navbar after click
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // collapse if open
+                    const bs = bootstrap.Collapse.getInstance(navCollapse);
+                    if (bs) bs.hide();
+                });
+            });
+
+            // Scroll to top button
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            window.addEventListener('scroll', () => {
+                if (document.documentElement.scrollTop > 220) scrollBtn.style.display = 'flex';
+                else scrollBtn.style.display = 'none';
+            });
+            scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            // Chart.js trophies: bar + pie toggle on click
+            const trophyCtx = document.getElementById('trophyChart').getContext('2d');
+            const trophyData = {
+                labels: ['La Liga', 'Copa del Rey', 'UCL', 'Supercopa', 'Club WC', 'UEFA Super'],
+                datasets: [{
+                    label: 'Jumlah Trofi',
+                    data: [27, 31, 5, 14, 3, 5],
+                    backgroundColor: ['#004d98', '#a50044', '#f6c84c', '#0f9d58', '#8e44ad', '#e67e22'],
+                    borderRadius: 6
+                }]
+            };
+            let trophyChart = new Chart(trophyCtx, {
+                type: 'bar',
+                data: trophyData,
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false }, tooltip: { mode: 'index' } },
+                    scales: { y: { beginAtZero: true } },
+                    animation: { duration: 800, easing: 'easeOutQuart' }
+                }
+            });
+
+            // Toggle chart type on clicking canvas
+            let chartIsBar = true;
+            document.getElementById('trophyChart').addEventListener('click', () => {
+                trophyChart.destroy();
+                chartIsBar = !chartIsBar;
+                trophyChart = new Chart(trophyCtx, {
+                    type: chartIsBar ? 'bar' : 'pie',
+                    data: trophyData,
+                    options: chartIsBar ? {
+                        responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } }
+                    } : { responsive: true, plugins: { legend: { position: 'bottom' } } }
+                });
+            });
+
+            // Ticket form logic: update total, validate, modal purchase flow
+            const ticketCategory = document.getElementById('ticketCategory');
+            const ticketCount = document.getElementById('ticketCount');
+            const ticketTotal = document.getElementById('ticketTotal');
+            const promoCode = document.getElementById('promoCode');
+            const ticketForm = document.getElementById('ticketForm');
+            const seatMapModal = new bootstrap.Modal(document.getElementById('seatMapModal'));
+            const liveToastEl = document.getElementById('liveToast');
+            const liveToast = new bootstrap.Toast(liveToastEl, { delay: 4000 });
+
+            function calcTotal() {
+                const price = Number(ticketCategory.value || 0);
+                let qty = Number(ticketCount.value || 0);
+                if (qty < 1) qty = 1;
+                // Promo example: if code 'BARCA10' -> 10% off
+                let total = price * qty;
+                const code = promoCode.value.trim().toUpperCase();
+                if (code === 'BARCA10') { total = total * 0.9; }
+                ticketTotal.textContent = `€${total.toFixed(2)}`;
+                return total;
+            }
+            // update on change
+            [ticketCategory, ticketCount, promoCode].forEach(el => el.addEventListener('input', calcTotal));
+            // initial calc
+            calcTotal();
+
+            // Seat map preview
+            document.getElementById('previewSeatMap').addEventListener('click', () => seatMapModal.show());
+            document.getElementById('openNextMatchModal').addEventListener('click', () => {
+                // prefill default selection and open purchase modal (we reuse seatMap for demo)
+                seatMapModal.show();
+            });
+            document.getElementById('confirmSeatBtn').addEventListener('click', () => {
+                seatMapModal.hide();
+                const price = calcTotal();
+                document.getElementById('toastBody').textContent = `Kursi dipilih. Estimasi biaya €${price.toFixed(2)} — lanjutkan untuk menyelesaikan pembayaran (demo).`;
+                liveToast.show();
+            });
+
+            ticketForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const qty = Number(ticketCount.value);
+                if (isNaN(qty) || qty < 1 || qty > 10) {
+                    alert('Jumlah tiket harus antara 1 dan 10.');
+                    ticketCount.focus();
+                    return;
+                }
+                // Simulate successful booking
+                const total = calcTotal();
+                document.getElementById('toastBody').textContent = `✅ Pemesanan Berhasil! Total: €${total.toFixed(2)}. E-ticket akan dikirim (demo).`;
+                liveToast.show();
+                // reset form lightly
+                // ticketForm.reset(); calcTotal();
+            });
+
+
+
+
+            // News filter + search
+            const newsCards = Array.from(document.querySelectorAll('#news .match-card'));
+            document.getElementById('filterAll').addEventListener('click', () => showNewsFiltered(() => true));
+            document.getElementById('filterLaLiga').addEventListener('click', () => showNewsFiltered(el =>
+                el.querySelector('h6').textContent.includes('La Liga')));
+            document.getElementById('filterUCL').addEventListener('click', () => showNewsFiltered(el =>
+                el.querySelector('h6').textContent.includes('Champions')));
+
+            function showNewsFiltered(predicate) {
+                newsCards.forEach(card => { card.closest('.col-md-4').style.display = predicate(card) ? '' : 'none'; });
+            }
+
+            // Search input: filter news live
+            const searchInput = document.getElementById('newsSearch');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const q = e.target.value.trim().toLowerCase();
+                    newsCards.forEach(card => {
+                        const text = card.textContent.toLowerCase();
+                        card.closest('.col-md-4').style.display = q === '' || text.includes(q) ? '' : 'none';
+                    });
+                });
+                // quick focus via keyboard 's'
+                window.addEventListener('keydown', (ev) => {
+                    if (ev.key === 's' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+                        ev.preventDefault(); searchInput.focus();
+                    }
+                });
+            }
+
+            // small UX: pressing Enter on promo applies code check visual
+            promoCode.addEventListener('keyup', (e) => { if (e.key === 'Enter') { calcTotal(); } });
+
+            // small performance: preconnect common origins (images, cdn) - insert link tags
+            const preconnects = ['https://fonts.gstatic.com', 'https://cdn.jsdelivr.net'];
+            preconnects.forEach(u => {
+                const l = document.createElement('link'); l.rel = 'preconnect'; l.href = u; l.crossOrigin
+                    = ''; document.head.appendChild(l);
+            });
+
+            // Keyboard accessibility: Escape closes modals by default via bootstrap
+
+            // Final: ensure charts redraw on resize (better responsiveness)
+            window.addEventListener('resize', () => { if (trophyChart) trophyChart.resize(); });
+
+        })();
+    </script>
+    <script>
+        (() => {
+            // semua kode bawaan template kamu di sini
+            window.addEventListener('resize', () => { if (trophyChart) trophyChart.resize(); });
+        })();
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function loadJadwal() {
+                fetch('refresh.php')
+                    .then(response => response.text())
+                    .then(data => {
+                        const tbody = document.querySelector('#tickets tbody');
+                        if (tbody) tbody.innerHTML = data;
+                    })
+                    .catch(error => console.error('Gagal memuat jadwal:', error));
+            }
+
+            // Jalankan pertama kali dan perbarui otomatis tiap 5 detik
+            loadJadwal();
+            setInterval(loadJadwal, 5000);
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function loadNextMatch() {
+                fetch('get_jadwal.php')
+                    .then(response => response.text())
+                    .then(data => {
+                        const container = document.getElementById('next-match');
+                        if (container) container.innerHTML = data;
+                    })
+                    .catch(err => console.error('Gagal memuat pertandingan berikutnya:', err));
+            }
+
+            // jalankan langsung saat halaman dibuka
+            loadNextMatch();
+
+            // update otomatis setiap 1 jam (opsional)
+            setInterval(loadNextMatch, 5000);
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const categorySelect = document.getElementById("ticketCategory");
+            const countInput = document.getElementById("ticketCount");
+            const totalDisplay = document.getElementById("ticketTotal");
+
+            function updateTotal() {
+                const pricePerTicket = parseFloat(categorySelect.value) || 0;
+                const count = parseInt(countInput.value) || 0;
+                const total = pricePerTicket * count;
+
+                // Format angka dengan Euro (€) dan pemisah ribuan
+                totalDisplay.textContent = "€" + total.toLocaleString("en-EN");
+            }
+
+            // Jalankan pertama kali (saat halaman dibuka)
+            updateTotal();
+
+            // Jalankan setiap kali kategori atau jumlah berubah
+            categorySelect.addEventListener("change", updateTotal);
+            countInput.addEventListener("input", updateTotal);
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("culersForm");
+            const message = document.getElementById("culersMessage");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault(); // cegah reload halaman
+
+                const name = document.getElementById("culersName").value.trim();
+                const email = document.getElementById("culersEmail").value.trim();
+
+                if (name === "" || email === "") {
+                    message.innerHTML = "<span class='text-danger'>❌ Nama dan email wajib diisi.</span>";
+                    return;
+                }
+
+                // Simulasi kirim data (nanti bisa diganti AJAX ke database)
+                message.innerHTML = "<span class='text-success'>✅ Terima kasih, " + name + "! Kamu sudah bergabung dengan Culers Community.</span>";
+
+                // Reset form
+                form.reset();
+            });
+        });
+    </script>
+
+    // Join community form
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const joinForm = document.getElementById('joinForm');
+            const toastEl = document.getElementById('liveToast');
+            const toastBody = document.getElementById('toastBody');
+            const liveToast = new bootstrap.Toast(toastEl);
+
+            joinForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById('nameInput').value.trim();
+                const email = document.getElementById('emailInput').value.trim();
+
+                if (!name || !email.includes('@')) {
+                    alert('Masukkan nama dan email yang valid.');
+                    return;
+                }
+
+                // Kirim ke PHP
+                fetch('simpanculers.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: 'nama=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email)
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        console.log('Respon server:', data);
+                        if (data.startsWith('success')) {
+                            toastBody.textContent = `Terima kasih, ${name}! Email ${email} telah ditambahkan ke Culers.`;
+                            liveToast.show();
+                            joinForm.reset();
+                        } else {
+                            alert('Gagal menyimpan data: ' + data);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                        alert('Terjadi kesalahan koneksi ke server.');
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+</body>
+
+</html>
